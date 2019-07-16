@@ -10,7 +10,6 @@ const App = () => {
           <Header/>
           <Navigation/>
           <Profile/>
-          test1
       </div>
   )
 };
