@@ -3,28 +3,7 @@
     grid-template-areas: "header header" "navigation content";
     grid-template-rows: 60px 1fr;
     grid-template-columns: 2fr 10fr;
+    width: 80%;
+    margin: 0 auto;
     /*grid-gap: 10px;*/
-}
-
-.header img {
-    width: 10%;
-    height: 100%;
-}
-.header {
-    grid-area: header;
-}
-
-.content img {
-    width: 100%;
-    height: 500px;
-}
-
-.nav {
-    grid-area: navigation;
-    background: yellow;
-}
-
-.content {
-    grid-area: content;
-    background: lightskyblue;
 }
