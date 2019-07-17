@@ -1,0 +1,9 @@
+.content img {
+    width: auto;
+    height: 500px;
+}
+
+.content {
+    grid-area: content;
+    background: lightskyblue;
+}

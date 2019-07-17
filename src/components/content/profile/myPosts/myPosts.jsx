@@ -2,11 +2,14 @@ import React from 'react';
 import s from './myPosts.module.css'
 import Post from "./post/post";
 
-/*
-const arr = [1,2,3,4,5,6,7,8,9,10];
+let messagesArr = ['Привет', 'Как дела?', 'Заебись, братан', 'Четко!'];
 
-const arr2 = arr.map((key)=>{return <Post/>});
-*/
+let messages = messagesArr.map((key) => {
+    return (
+        <Post key={key} message={
+            key}/>
+    )
+});
 
 
 const MyPosts = () => {
@@ -14,11 +17,17 @@ const MyPosts = () => {
         <div>
             My posts
             <div>
-                <textarea></textarea>
+                <textarea placeholder="Please, enter the text">
+
+                </textarea>
                 <button>Send</button>
             </div>
             <div className={s.posts}>
-                <Post />
+
+                {/*<Post message='hi, bro'/>*/}
+                {/*<Post message='Hello, Dear'/>*/}
+
+                {messages}
             </div>
         </div>
     )

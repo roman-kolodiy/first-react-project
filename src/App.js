@@ -2,16 +2,19 @@ import React from 'react';
 import './App.css';
 import Header from "./components/header/header";
 import Navigation from "./components/navbar/navbar";
-import Profile from "./components/content/profile/profile";
+import Content from "./components/content/content";
+import {BrowserRouter} from "react-router-dom";
 
 const App = () => {
-  return (
-      <div className='app-wrap'>
-          <Header/>
-          <Navigation/>
-          <Profile/>
-      </div>
-  )
+    return (
+        <BrowserRouter>
+            <div className='app-wrap'>
+                <Header/>
+                <Navigation/>
+                <Content/>
+            </div>
+        </BrowserRouter>
+    )
 };
 
 export default App;

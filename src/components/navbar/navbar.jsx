@@ -1,24 +1,17 @@
 import React from 'react';
 import s from './navbar.module.css';
+import NavbarElem from "./navbarElem/navbarElem";
+
+let navBarListData = ['Profile', 'Dialogs', 'News', 'Music', 'Settings'];
+let navBarList = navBarListData.map((name) =>
+    <NavbarElem key={name} link={`/${name}`} name={name}/>
+);
+
 
 const Navigation = () => {
     return (
-        <nav className={s.nav}>
-            <div className={`${s.item} ${s.active}`}>
-                <a>Profile</a>
-            </div>
-            <div className={s.item}>
-                <a>Messages</a>
-            </div>
-            <div className={s.item}>
-                <a>Setting</a>
-            </div>
-            <div className={s.item}>
-                <a>Author</a>
-            </div>
-            <div className={s.item}>
-                <a>Some</a>
-            </div>
+        <nav className={s.navigation}>
+            {navBarList}
         </nav>
     )
 };
