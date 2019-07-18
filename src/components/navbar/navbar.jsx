@@ -2,7 +2,7 @@ import React from 'react';
 import s from './navbar.module.css';
 import NavbarElem from "./navbarElem/navbarElem";
 
-let navBarListData = ['Profile', 'Dialogs', 'News', 'Music', 'Settings'];
+let navBarListData = ['Profile', 'Messages', 'News', 'Music', 'Settings'];
 let navBarList = navBarListData.map((name) =>
     <NavbarElem key={name} link={`/${name}`} name={name}/>
 );

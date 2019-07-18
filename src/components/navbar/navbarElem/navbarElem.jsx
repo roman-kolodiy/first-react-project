@@ -1,11 +1,12 @@
 import React from 'react';
 import s from './navbarElem.module.css';
+import {NavLink} from "react-router-dom";
 
 
 const NavbarElem = (props) => {
     return (
         <div className={`${s.item}`}>
-            <a href={props.link.toLowerCase()}>{props.name}</a>
+            <NavLink to={props.link.toLowerCase()} activeClassName={s.activeLink}>{props.name}</NavLink>
         </div>
     )
 };
