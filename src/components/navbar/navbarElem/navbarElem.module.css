@@ -1,7 +1,12 @@
-.item {
+.item a {
     color: red;
-    margin-left: 20px;
-    padding-top: 20px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.item {
+    line-height: 30px;
+    padding-left: 30px;
 }
 
 .active {
