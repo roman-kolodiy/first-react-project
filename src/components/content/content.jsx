@@ -8,11 +8,11 @@ import Settings from "./settings/settings";
 import Messages from "./messages/messages";
 
 
-const Content = () => {
+const Content = (props) => {
     return (
         <div className={s.content}>
-            <Route path='/profile' component={Profile}/>
-            <Route path='/messages' component={Messages}/>
+            <Route path='/profile' render={(data) => <Profile {...data} {...props}/>}/>
+            <Route path='/messages' render={(data) => <Messages {...data} {...props}/>} />
             <Route path='/news' component={News}/>
             <Route path='/music' component={Music}/>
             <Route path='/settings' component={Settings}/>

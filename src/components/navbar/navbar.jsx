@@ -2,13 +2,11 @@ import React from 'react';
 import s from './navbar.module.css';
 import NavbarElem from "./navbarElem/navbarElem";
 
-let navBarListData = ['Profile', 'Messages', 'News', 'Music', 'Settings'];
-let navBarList = navBarListData.map((name) =>
-    <NavbarElem key={name} link={`/${name}`} name={name}/>
-);
+const Navigation = (props) => {
+    let navBarList = props.navBarListData.map((data, index) =>
+        <NavbarElem key={index} link={`/${data.name}`} name={data.name}/>
+    );
 
-
-const Navigation = () => {
     return (
         <nav className={s.navigation}>
             {navBarList}

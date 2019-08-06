@@ -5,13 +5,13 @@ import Navigation from "./components/navbar/navbar";
 import Content from "./components/content/content";
 import {BrowserRouter} from "react-router-dom";
 
-const App = () => {
+const App = (props) => {
     return (
         <BrowserRouter>
             <div className='app-wrap'>
                 <Header/>
-                <Navigation/>
-                <Content/>
+                <Navigation {...props}/>
+                <Content data={props}/>
             </div>
         </BrowserRouter>
     )
