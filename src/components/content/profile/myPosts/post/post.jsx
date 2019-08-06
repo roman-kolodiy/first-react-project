@@ -8,6 +8,7 @@ const Post = (props) => {
             {props.message}
             <div>
                 <span>Lukas</span>
+                <span>{props.likes}</span>
             </div>
         </div>
     )

@@ -19,16 +19,26 @@ const UserMessages = (props) => {
 };
 
 const Messages = () => {
-    let arrDialog = ['LeBron', 'Wade', 'Curry', 'Jordan'];
+    let dataDialogs = [
+        {id:1, name: 'LeBron'},
+        {id:2, name: 'Wade'},
+        {id:3, name: 'Curry'},
+        {ia:4, name: 'Jordan'}
+        ];
 
-    let dataDialog = arrDialog.map((name, index) => {
-        return <UserDialog key={index} id={index + 1} name={name}/>;
+    let dataDialog = dataDialogs.map((data, index) => {
+        return <UserDialog key={index} id={data.id} name={data.name}/>;
     });
 
-    let arrMessages = ['Hello', 'How are you?', 'I am fine, thank u. And you?', 'I am too'];
+    let dataMessages = [
+        {id:1, messageText: 'Hello'},
+        {id:2, messageText: 'How are you?'},
+        {id:3, messageText: 'I am fine, thank u. And you?'},
+        {ia:4, messageText: 'I am too'}
+    ];
 
-    let dataMessage = arrMessages.map((message, index) => {
-        return <UserMessages key={index} id={index + 1} message={message}/>;
+    let dataMessage = dataMessages.map((data, index) => {
+        return <UserMessages key={index} id={data.id} message={data.messageText}/>;
     });
 
     return (
