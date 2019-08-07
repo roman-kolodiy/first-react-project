@@ -6,13 +6,13 @@ import ButtonTextarea from "../../../common components/button+textarea/button-te
 
 
 const MyPosts = (props) => {
-
-    let posts = props.dataPosts.map((data, index) => <Post key={index} id={data.id} message={data.text} likes={data.likes}/>);
+    let folderArea = 'profilePage';
+    let posts = props.appData.profilePage.dataPosts.map((data, index) => <Post key={index} id={data.id} message={data.text} likes={data.likes}/>);
 
     return (
         <div className={s.postsBlock}>
             <h3>My posts</h3>
-            <ButtonTextarea/>
+            <ButtonTextarea {...props} folderArea={folderArea}/>
             <div className={s.posts}>
                 {posts}
             </div>

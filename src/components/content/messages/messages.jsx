@@ -5,10 +5,10 @@ import MessageItem from "./massegeItem/messageItem";
 import ButtonTextarea from "../../common components/button+textarea/button-texarea";
 
 const Messages = (props) => {
-    let dataDialog = props.dataDialogs.map((data, index) => <DialogItem key={index} id={data.id} name={data.name}/>);
-    let dataMessage = props.dataMessages.map((data, index) => <MessageItem key={index} id={data.id}
-                                                                           message={data.messageText}/>);
-
+    let folderArea = 'messagesPage';
+    let dataDialog = props.appData.messagesPage.dataDialogs.map((data, index) => <DialogItem key={index} id={data.id} name={data.name}/>);
+    let dataMessage = props.appData.messagesPage.dataMessages.map((data, index) => <MessageItem key={index} id={data.id}
+                                                                          message={data.text}/>);
     return (
         <div className={s.messagesContent}>
             <div className={s.usersDialogs}>
@@ -17,7 +17,7 @@ const Messages = (props) => {
             <div className={s.userContentDialog}>
                 {dataMessage}
             </div>
-            <ButtonTextarea/>
+            <ButtonTextarea {...props} folderArea={folderArea}/>
         </div>
     )
 };

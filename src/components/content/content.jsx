@@ -11,8 +11,8 @@ import Messages from "./messages/messages";
 const Content = (props) => {
     return (
         <div className={s.content}>
-            <Route path='/profile' render={() => <Profile {...props.profilePage}/>}/>
-            <Route path='/messages' render={() => <Messages {...props.messagesPage}/>} />
+            <Route path='/profile' render={() => <Profile {...props}/>}/>
+            <Route path='/messages' render={() => <Messages {...props}/>} />
             <Route path='/news' render={() => <News/>}/>
             <Route path='/music' render={() => <Music/>}/>
             <Route path='/settings' render={() => <Settings/>}/>
