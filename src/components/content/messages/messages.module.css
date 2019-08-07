@@ -2,9 +2,30 @@
     display: grid;
     grid-template-columns: 2fr 10fr;
     padding: 10px;
+    grid-template-areas: "usersDialogs userContentDialog" "usersDialogs userMessagesArea";
+
 }
 
 a {
     text-decoration: none;
     color: #000;
+}
+
+.usersDialogs {
+    grid-area: usersDialogs;
+}
+
+.userContentDialog {
+    grid-area: userContentDialog;
+    min-height: 760px;
+    height: auto;
+}
+
+.userDialog {
+    margin: 5px;
+    display: block;
+}
+
+.userMessages {
+    margin: 5px;
 }

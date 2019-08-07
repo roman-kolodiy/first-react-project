@@ -5,7 +5,7 @@ import {NavLink} from "react-router-dom";
 const DialogItem = (props) => {
     return (
         <div>
-            <NavLink to={`/messages/${props.name.toLowerCase()}`}>{props.name}</NavLink>
+            <NavLink className={s.userDialog} to={`/messages/${props.name.toLowerCase()}`}>{props.name}</NavLink>
         </div>
     )
 };

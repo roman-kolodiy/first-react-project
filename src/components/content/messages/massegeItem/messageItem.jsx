@@ -4,7 +4,7 @@ import s from './../messages.module.css'
 const MessageItem = (props) => {
     return (
         <div>
-            <div>{props.message}</div>
+            <div className={s.userMessages}>{props.message}</div>
         </div>
     )
 };
