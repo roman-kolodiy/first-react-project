@@ -1,18 +1,21 @@
 import React from 'react';
 import s from './button-textarea.module.css';
+import {addPostActionCreator, changePostActionCreator} from "../../../redux/state";
+
 
 const ButtonTextarea = (props) => {
     let newPostElem = React.createRef();
     let addPost = (e) => {
         let targetClassName = e.target.className;
         let text = newPostElem.current.value;
-        props.addPost(text, targetClassName);
+        // let action = {type: 'ADD-POST', text: text, targetClassName:targetClassName};
+        props.dispatch(addPostActionCreator(text, targetClassName));
     };
 
     let onChangePost = (e) => {
         let targetClassName = e.target.className;
         let text = newPostElem.current.value;
-        props.changeNewPost(text, targetClassName);
+        props.dispatch(changePostActionCreator(text, targetClassName));
     };
     return (
         <div className={s.userMessagesArea}>
