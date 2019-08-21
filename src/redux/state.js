@@ -1,5 +1,6 @@
 // import {rerenderEntireTree} from "../render";
-
+const ADD_POST = 'ADD-POST';
+const CHANGE_NEW_POST = 'CHANGE-NEW-POST';
 
 let store = {
     _state: {
@@ -69,29 +70,26 @@ let store = {
     },
 
     dispatch(action) { // {type: "ADD-POST"}
-        if(action.type === 'ADD-POST'){
+        if(action.type === ADD_POST){
             this._addPost(action.text, action.targetClassName)
-        } else if (action.type === "CHANGE-NEW-POST"){
+        } else if (action.type === CHANGE_NEW_POST){
             this._changeNewPost(action.text, action.targetClassName)
         }
     }
 };
 
-export const addPostActionCreator = (text, targetClassName) => {
-    return {
-        type: 'ADD-POST',
-        text: text,
-        targetClassName: targetClassName
-    }
-};
 
-export const changePostActionCreator = (text, targetClassName) => {
-    return {
-        type: 'CHANGE-NEW-POST',
+export const addPostActionCreator = (text, targetClassName) => ({
+        type: ADD_POST,
         text: text,
         targetClassName: targetClassName
-    }
-};
+    });
+
+export const changePostActionCreator = (text, targetClassName) => ({
+        type: CHANGE_NEW_POST,
+        text: text,
+        targetClassName: targetClassName
+    });
 
 
 window.store = store;
