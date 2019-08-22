@@ -1,6 +1,7 @@
 import React from 'react';
 import s from './button-textarea.module.css';
-import {addPostActionCreator, changePostActionCreator} from "../../../redux/state";
+import {addPostActionCreator, changePostActionCreator} from "../../../redux/profile-reducer";
+import {addMessageActionCreator, changeMessageActionCreator} from "../../../redux/messages-reducer";
 
 
 const ButtonTextarea = (props) => {
@@ -9,13 +10,21 @@ const ButtonTextarea = (props) => {
         let targetClassName = e.target.className;
         let text = newPostElem.current.value;
         // let action = {type: 'ADD-POST', text: text, targetClassName:targetClassName};
-        props.dispatch(addPostActionCreator(text, targetClassName));
+        if(targetClassName === 'profilePage'){
+            props.dispatch(addPostActionCreator(text, targetClassName));
+        } else if (targetClassName === 'messagesPage'){
+            props.dispatch(addMessageActionCreator(text, targetClassName));
+        }
     };
 
     let onChangePost = (e) => {
         let targetClassName = e.target.className;
         let text = newPostElem.current.value;
-        props.dispatch(changePostActionCreator(text, targetClassName));
+        if(targetClassName === 'profilePage'){
+            props.dispatch(changePostActionCreator(text, targetClassName));
+        } else if (targetClassName === 'messagesPage'){
+            props.dispatch(changeMessageActionCreator(text, targetClassName));
+        }
     };
     return (
         <div className={s.userMessagesArea}>
