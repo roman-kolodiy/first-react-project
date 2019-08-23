@@ -10,7 +10,7 @@ const App = (props) => {
         <BrowserRouter>
             <div className='app-wrap'>
                 <Header/>
-                <Navigation {...props.appData}/>
+                <Navigation {...props.state}/>
                 <Content {...props}/>
             </div>
         </BrowserRouter>

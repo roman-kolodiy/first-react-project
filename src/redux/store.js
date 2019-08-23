@@ -50,7 +50,6 @@ let store = {
     },
 
     dispatch(action) {
-        debugger;
         this._state.profilePage = changeAddNewPostsReducer(this._state.profilePage, action);
         this._state.messagesPage = changeAddNewMessagesReducer(this._state.messagesPage, action);
         this._state.sidebarPage = sidebarReducer(this._state.sidebarPage, action);
@@ -61,4 +60,4 @@ let store = {
 
 
 window.store = store;
-export default store;
+// export default store;
