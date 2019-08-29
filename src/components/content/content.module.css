@@ -1,9 +1,0 @@
-.content img {
-    width: 100%;
-    height: 500px;
-}
-
-.content {
-    grid-area: content;
-    background: lightskyblue;
-}

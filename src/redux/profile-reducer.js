@@ -1,46 +1,39 @@
 const ADD_POST = 'ADD-POST';
-const CHANGE_NEW_POST = 'CHANGE-NEW-POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 
 let initialState = {
-    dataPosts: [
-        {id: 1, text: 'Привет', likes: 12},
-        {id: 2, text: 'Как дела?', likes: 5},
-        {id: 3, text: 'Заебись, братан', likes: 50},
-        {ia: 4, text: 'Четко!', likes: 11}
+    posts: [
+        {id: 1, message: 'Hi, how are you?', likesCount: 12},
+        {id: 2, message: 'It\'s my first post', likesCount: 11},
+        {id: 3, message: 'Blabla', likesCount: 11},
+        {id: 4, message: 'Dada', likesCount: 11}
     ],
-    newPostText: ''
+    newPostText: 'it-kamasutra.com'
 };
 
+const profileReducer = (state = initialState, action) => {
 
-const changeAddNewPostsReducer = (state = initialState, action) => {
-
-    switch (action.type) {
+    switch(action.type) {
         case ADD_POST:
             let newPost = {
-                id: 5, text: action.text, likes: 0
+                id: 5,
+                message: state.newPostText,
+                likesCount: 0
             };
-            state.dataPosts.push(newPost);
+            state.posts.push(newPost);
             state.newPostText = '';
             return state;
-        case CHANGE_NEW_POST:
-            state.newPostText = action.text;
+        case UPDATE_NEW_POST_TEXT:
+            state.newPostText = action.newText;
             return state;
         default:
             return state;
     }
-};
-
-export const addPostActionCreator = (text, targetClassName) => ({
-    type: ADD_POST,
-    text: text,
-    targetClassName: targetClassName
-});
-
-export const changePostActionCreator = (text, targetClassName) => ({
-    type: CHANGE_NEW_POST,
-    text: text,
-    targetClassName: targetClassName
-});
+}
 
 
-export default changeAddNewPostsReducer;
+export const addPostActionCreator = () => ({type: ADD_POST})
+export const updateNewPostTextActionCreator = (text) =>
+    ({type: UPDATE_NEW_POST_TEXT, newText: text })
+
+export default profileReducer;

@@ -1,63 +1,60 @@
-// import {rerenderEntireTree} from "../render";
-import changeAddNewPostsReducer from "./profile-reducer";
+import profileReducer from "./profile-reducer";
+import dialogsReducer from "./dialogs-reducer";
 import sidebarReducer from "./sidebar-reducer";
-import changeAddNewMessagesReducer from "./messages-reducer";
-import navlinkReducer from "./navlink-reducer";
 
 let store = {
     _state: {
         profilePage: {
-            dataPosts: [
-                {id: 1, text: 'Привет', likes: 12},
-                {id: 2, text: 'Как дела?', likes: 5},
-                {id: 3, text: 'Заебись, братан', likes: 50},
-                {ia: 4, text: 'Четко!', likes: 11}
+            posts: [
+                {id: 1, message: 'Hi, how are you?', likesCount: 12},
+                {id: 2, message: 'It\'s my first post', likesCount: 11},
+                {id: 3, message: 'Blabla', likesCount: 11},
+                {id: 4, message: 'Dada', likesCount: 11}
             ],
-            newPostText: ''
+            newPostText: 'it-kamasutra.com'
         },
-        messagesPage: {
-            dataMessages: [
-                {id: 1, text: 'Hello'},
-                {id: 2, text: 'How are you?'},
-                {id: 3, text: 'I am fine, thank u. And you?'},
-                {ia: 4, text: 'I am too'}
+        dialogsPage: {
+            dialogs: [
+                {id: 1, name: 'Dimych'},
+                {id: 2, name: 'Andrew'},
+                {id: 3, name: 'Sveta'},
+                {id: 4, name: 'Sasha'},
+                {id: 5, name: 'Viktor'},
+                {id: 6, name: 'Valera'}
             ],
-            dataDialogs: [
-                {id: 1, name: 'LeBron'},
-                {id: 2, name: 'Wade'},
-                {id: 3, name: 'Curry'},
-                {ia: 4, name: 'Jordan'}
+            messages: [
+                {id: 1, message: 'Hi'},
+                {id: 2, message: 'How is your it-kamasutra?'},
+                {id: 3, message: 'Yo'},
+                {id: 4, message: 'Yo'},
+                {id: 5, message: 'Yo'}
             ],
-            newMessageText: ''
+            newMessageBody: ""
         },
-        navBarListData: [
-            {id: 1, name: 'Profile'},
-            {id: 2, name: 'Messages'},
-            {id: 3, name: 'News'},
-            {id: 4, name: 'Music'},
-            {ia: 5, name: 'Settings'}
-        ],
-        sidebarPage: {}
+        sidebar: {}
     },
     _callSubscriber() {
-        console.log('state changed');
+        console.log('State changed');
+    },
+
+    getState() {
+        debugger;
+        return this._state;
     },
     subscribe(observer) {
-        this._callSubscriber = observer;
-    },
-    getState() {
-        return this._state;
+        this._callSubscriber = observer;  // observer
     },
 
     dispatch(action) {
-        this._state.profilePage = changeAddNewPostsReducer(this._state.profilePage, action);
-        this._state.messagesPage = changeAddNewMessagesReducer(this._state.messagesPage, action);
-        this._state.sidebarPage = sidebarReducer(this._state.sidebarPage, action);
-        this._state.navBarListData = navlinkReducer(this._state.navBarListData, action);
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._state.sidebar = sidebarReducer(this._state.sidebar, action);
+
         this._callSubscriber(this._state);
     }
-};
+}
 
 
+export default store;
 window.store = store;
-// export default store;
+// store - OOP
