@@ -1,33 +1,4 @@
-.fullInfo {
-    display: grid;
-    width: 90%;
-    grid-template-areas: "ab ic";
-    grid-template-columns: 1fr 5fr;
-    margin: 40px auto;
-}
-
-.avatarBlock {
-    grid-area: ab;
-}
-
-.avatarBlock img {
-    max-width: 100%;
-}
-
-.avatarBlock button {
-    display: block;
-    min-width: 100%;
-    min-height: 20px;
-}
-
-.infoBlock {
-    margin-left: 50px;
-    grid-area: ic;
-    display: flex;
-    justify-content: space-between;
-    padding: 15px;
-    border: 2px solid black;
-    -webkit-border-radius: 10%;
-    -moz-border-radius: 10%;
-    border-radius: 10%;
+.userPhoto {
+     width: 100px;
+    height: 100px;
 }

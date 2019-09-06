@@ -1,30 +1,26 @@
-import React from 'react'
+import React from 'react';
+import Users from "./Users";
 import {connect} from "react-redux";
 import {followAC, setUsersAC, unfollowAC} from "../../redux/users-reducer";
-import UsersClass from "./UsersClass";
 
-const mapStateToProps = (state) => {
+let mapStateToProps = (state) => {
     return {
-        usersList: state.usersPage.usersList
+        users: state.usersPage.users
     }
-};
+}
 
-const mapDispatchToProps = (dispatch) => {
+let mapDispatchToProps = (dispatch) => {
     return {
-        followUser: (userID) => {
-            dispatch(followAC(userID))
+        follow: (userId) => {
+            dispatch(followAC(userId));
         },
-        unfollowUser: (userID) => {
-            dispatch(unfollowAC(userID))
+        unfollow: (userId) => {
+            dispatch(unfollowAC(userId));
         },
-        setUsers: (usersList) => {
-            dispatch(setUsersAC(usersList))
+        setUsers: (users) => {
+            dispatch(setUsersAC(users));
         }
-
-
     }
-};
+}
 
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersClass);
-
-export default UsersContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(Users);

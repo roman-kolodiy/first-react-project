@@ -15,13 +15,17 @@ const App = () => {
                 <div className='app-wrapper-content'>
                     <Route path='/dialogs'
                            render={ () => <DialogsContainer /> }/>
+
                     <Route path='/profile'
                            render={ () => <Profile /> }/>
+
                     <Route path='/users'
                            render={ () => <UsersContainer /> }/>
+
+
                 </div>
             </div>
         )
-};
+}
 
 export default App;

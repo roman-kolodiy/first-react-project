@@ -3,22 +3,21 @@ import {sendMessageCreator, updateNewMessageBodyCreator} from "../../redux/dialo
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 
-const mapStateToProps = (state) => {
+let mapStateToProps = (state) => {
     return {
         dialogsPage: state.dialogsPage
-    };
-};
-
-const mapDispatchToProps = (dispatch) => {
+    }
+}
+let mapDispatchToProps = (dispatch) => {
     return {
-        updateNewMessageBody: (body) => {
-            dispatch(updateNewMessageBodyCreator(body));
-        },
         sendMessage: () => {
             dispatch(sendMessageCreator());
+        },
+        updateNewMessageBody: (body) => {
+            dispatch(updateNewMessageBodyCreator(body));
         }
     }
-};
+}
 
 const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
 
