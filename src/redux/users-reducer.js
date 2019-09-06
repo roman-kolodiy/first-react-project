@@ -7,14 +7,13 @@ let initialState = {
 };
 
 const userReducer = (state = initialState, action) => {
-    debugger;
     switch (action.type) {
         case FOLLOW:
             return {
                 ...state,
                 usersList: state.usersList.map((user) => {
-                    if(user.id === action.userID){
-                        return {...user, followStatus: false};
+                    if (user.id === action.userID) {
+                        return {...user, followed: true};
                     }
                     return user;
                 })
@@ -23,8 +22,8 @@ const userReducer = (state = initialState, action) => {
             return {
                 ...state,
                 usersList: state.usersList.map((user) => {
-                    if(user.id === action.userID){
-                        return {...user, followStatus: true};
+                    if (user.id === action.userID) {
+                        return {...user, followed: false};
                     }
                     return user;
                 })
