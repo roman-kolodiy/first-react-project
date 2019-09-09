@@ -2,3 +2,15 @@
      width: 100px;
     height: 100px;
 }
+
+.selectedPage {
+    font-weight: bold;
+}
+
+.pagination {
+    cursor: pointer;
+}
+
+.pagination span {
+    margin: 5px;
+}
