@@ -38,7 +38,6 @@ let store = {
     },
 
     getState() {
-        debugger;
         return this._state;
     },
     subscribe(observer) {
@@ -52,7 +51,7 @@ let store = {
 
         this._callSubscriber(this._state);
     }
-}
+};
 
 
 export default store;
