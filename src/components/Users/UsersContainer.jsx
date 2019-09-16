@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {followAC, setUsersAC, unfollowAC, setCurrentPageAC, setUsersTotalCountAC, toggleIsFetchingAC} from "../../redux/users-reducer";
+import {follow, setUsers, unfollow, setCurrentPage, setUsersTotalCount, toggleIsFetching} from "../../redux/users-reducer";
 import * as axios from 'axios/index';
 import Users from './Users';
 import Preloader from "../Common/Preloader";
@@ -10,7 +10,7 @@ class UsersContainer extends React.Component {
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
             .then(response => {
                 this.props.setUsers(response.data.items);
-                this.props.setTotalUsersCount(response.data.totalCount);
+                this.props.setUsersTotalCount(response.data.totalCount);
                 this.props.toggleIsFetching(false);
             });
     }
@@ -52,6 +52,7 @@ let mapStateToProps = (state) => {
     }
 };
 
+/*
 let mapDispatchToProps = (dispatch) => {
     return {
         follow: (userId) => {
@@ -74,6 +75,7 @@ let mapDispatchToProps = (dispatch) => {
         }
     }
 };
+*/
 
-
+let mapDispatchToProps =  {follow, unfollow, setUsers, setCurrentPage, setUsersTotalCount, toggleIsFetching};
 export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
