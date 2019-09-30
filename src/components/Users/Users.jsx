@@ -2,7 +2,6 @@ import React from 'react';
 import userPhoto from '../../assets/images/user.png';
 import styles from './Users.module.css';
 import {NavLink} from "react-router-dom";
-import {followAPI} from "../../api/api";
 
 
 const Users = (props) => {
@@ -11,7 +10,6 @@ const Users = (props) => {
     for (let i = 1; i <= Math.ceil(pagesCount); i++) {
         pages.push(i);
     }
-
     return <div>
         <div className={styles.pagination}>
             {pages.map((p, i) => {
@@ -35,28 +33,10 @@ const Users = (props) => {
                     <div>
                         {u.followed
                             ? <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
-                                props.toggleIsFollowingProgress(true, u.id);
-                                followAPI.unfollowUser(u.id)
-                                    .then(response => {
-                                        if (response.data.resultCode === 0) {
-                                            props.unfollow(u.id)
-                                        }
-                                        props.toggleIsFollowingProgress(false, u.id);
-                                    })
-                                    .catch(err => console.log(err))
-                                ;
+                                props.unfollow(u.id);
                             }}>Unfollow</button>
                             : <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
-                                props.toggleIsFollowingProgress(true, u.id);
-                                followAPI.followUser(u.id)
-                                    .then(response => {
-                                        if (response.data.resultCode === 0) {
-                                            props.follow(u.id)
-                                        }
-                                        props.toggleIsFollowingProgress(false, u.id);
-                                    })
-                                    .catch(err => console.log(err))
-                                ;
+                                props.follow(u.id);
                             }}>Follow</button>
                         }
                     </div>

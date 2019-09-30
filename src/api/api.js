@@ -20,7 +20,7 @@ export const followAPI = {
     unfollowUser (id) {
         return instance.delete(`follow/${id}`)
     },
-    followUser  (id) {
+    followUser (id) {
         return instance.post(`follow/${id}`, {})
     }
 };
@@ -28,16 +28,12 @@ export const followAPI = {
 export const profileAPI = {
     getProfile (id) {
         return instance.get(`profile/${id}`)
-            .then(response => response.data)
-            .catch(err => console.log(err))
     }
 };
 
 export const authAPI = {
     getAuth () {
         return instance.get(`auth/me`)
-            .then(response => response.data)
-            .catch(err => console.log(err))
     }
 };
 

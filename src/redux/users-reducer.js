@@ -1,3 +1,5 @@
+import {followAPI, usersAPI} from "../api/api";
+
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
@@ -8,7 +10,7 @@ const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS';
 
 
 let initialState = {
-    users: [ ],
+    users: [],
     pageSize: 25,
     totalUsersCount: 0,
     currentPage: 1,
@@ -17,11 +19,11 @@ let initialState = {
 };
 
 const usersReducer = (state = initialState, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case FOLLOW:
             return {
                 ...state,
-                users: state.users.map( u =>  {
+                users: state.users.map(u => {
                     if (u.id === action.userId) {
                         return {...u, followed: true}
                     }
@@ -31,7 +33,7 @@ const usersReducer = (state = initialState, action) => {
         case UNFOLLOW:
             return {
                 ...state,
-                users: state.users.map( u =>  {
+                users: state.users.map(u => {
                     if (u.id === action.userId) {
                         return {...u, followed: false}
                     }
@@ -39,7 +41,7 @@ const usersReducer = (state = initialState, action) => {
                 })
             };
         case SET_USERS: {
-            return { ...state, users: action.users }
+            return {...state, users: action.users}
         }
         case SET_CURRENT_PAGE: {
             return {
@@ -74,12 +76,61 @@ const usersReducer = (state = initialState, action) => {
 };
 
 
-export const follow = (userId) => ({type: FOLLOW, userId });
-export const unfollow = (userId) => ({type: UNFOLLOW, userId });
-export const setUsers = (users) => ({type: SET_USERS, users });
+export const followSuccess = (userId) => ({type: FOLLOW, userId});
+export const unfollowSuccess = (userId) => ({type: UNFOLLOW, userId});
+export const setUsers = (users) => ({type: SET_USERS, users});
 export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
-export const setUsersTotalCount = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, count : totalUsersCount});
+export const setUsersTotalCount = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, count: totalUsersCount});
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching});
-export const toggleIsFollowingProgress = (isFetching, userId) => ({type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId});
+export const toggleIsFollowingProgress = (isFetching, userId) => ({
+    type: TOGGLE_IS_FOLLOWING_PROGRESS,
+    isFetching,
+    userId
+});
+
+export const getUsers = (currentPage, pageSize) => {
+    return (dispatch) => {
+        dispatch(setCurrentPage(currentPage));
+        dispatch(toggleIsFetching(true));
+        usersAPI.getUsers(currentPage, pageSize)
+            .then(data => {
+                dispatch(setUsers(data.items));
+                dispatch(setUsersTotalCount(data.totalCount));
+                dispatch(toggleIsFetching(false));
+            });
+    }
+
+};
+
+export const unfollow = (userId) => {
+    return (dispatch) => {
+        dispatch(toggleIsFollowingProgress(true, userId));
+        followAPI.unfollowUser(userId)
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(unfollowSuccess(userId))
+                }
+                dispatch(toggleIsFollowingProgress(false, userId));
+            })
+            .catch(err => console.log(err))
+        ;
+    }
+};
+
+export const follow = (userId) => {
+    return (dispatch) => {
+        dispatch(toggleIsFollowingProgress(true, userId));
+        followAPI.followUser(userId)
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(followSuccess(userId))
+                }
+                dispatch(toggleIsFollowingProgress(false, userId));
+            })
+            .catch(err => console.log(err))
+        ;
+    }
+};
+
 
 export default usersReducer;
