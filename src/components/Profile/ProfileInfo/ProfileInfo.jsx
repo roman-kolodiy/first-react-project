@@ -3,6 +3,7 @@ import s from './ProfileInfo.module.css';
 import Preloader from "../../Common/Preloader";
 import statusYes from "../../../assets/images/yes.png"
 import statusNo from "../../../assets/images/no.png"
+import ProfileStatus from "./ProfileStatus"
 
 
 const ProfileInfo = (props) => {
@@ -18,10 +19,7 @@ const ProfileInfo = (props) => {
             <div className={s.descriptionBlock}>
                 <img src={props.profile.data.photos.small} alt='gg'/>
                 <div>
-                    <div>
-                        <div>STATUS</div>
-                        <div>{props.profile.data.aboutMe}</div>
-                    </div>
+                    <ProfileStatus {...props}/>
                     <div>
                         <div>CONTACTS</div>
                         <div>{props.profile.data.contacts.instagram}</div>
