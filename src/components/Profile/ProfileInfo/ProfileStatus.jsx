@@ -1,8 +1,4 @@
 import React from 'react';
-import s from './ProfileInfo.module.css';
-import Preloader from "../../Common/Preloader";
-import statusYes from "../../../assets/images/yes.png"
-import statusNo from "../../../assets/images/no.png"
 
 
 class ProfileStatus extends React.Component {
@@ -47,6 +43,6 @@ class ProfileStatus extends React.Component {
             </div>
         )
     }
-};
+}
 
 export default ProfileStatus;
