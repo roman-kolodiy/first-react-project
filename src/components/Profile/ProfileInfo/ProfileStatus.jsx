@@ -4,8 +4,6 @@ import React from 'react';
 class ProfileStatus extends React.Component {
     constructor(props) {
         super(props);
-        this.activeEditMode = this.activeEditMode.bind(this);
-        this.deActiveEditMode = this.deActiveEditMode.bind(this);
     }
 
     state = {
@@ -15,13 +13,13 @@ class ProfileStatus extends React.Component {
     // activeEditMode = () => {
     //     alert('hey')
     // };
-    activeEditMode () {
+    activeEditMode = () =>  {
         this.setState({
             editMode : true
         });
     };
 
-    deActiveEditMode () {
+    deActiveEditMode = () => {
         this.setState({
             editMode : false
         });
